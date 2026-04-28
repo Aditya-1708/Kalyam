@@ -4,8 +4,8 @@ import { FaBolt, FaGlobe, FaClock } from 'react-icons/fa';
 
 const About = () => {
   return (
-    <section id="about" className="bg-white border-y border-border py-16 lg:py-24 max-sm:py-14">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="about" className="bg-white border-y border-border py-14 sm:py-16 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24 items-start">
           <div className="md:col-span-1 md:sticky md:top-28">
             <Reveal><p className="section-label">Who We Are</p></Reveal>

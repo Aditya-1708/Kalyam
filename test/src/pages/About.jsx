@@ -11,7 +11,6 @@ const About = () => {
       <AboutSection />
       <Values />
       <Certification />
-      <Leadership />
       <Timeline />
     </div>
   );

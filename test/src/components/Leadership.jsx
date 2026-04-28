@@ -24,8 +24,8 @@ const Leadership = () => {
   ];
 
   return (
-    <section className="py-20 lg:py-32 bg-bg border-y border-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="py-14 sm:py-20 lg:py-32 bg-bg border-y border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <Reveal>
             <p className="section-label">Our Leadership</p>
@@ -38,7 +38,7 @@ const Leadership = () => {
           </Reveal>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12">
           {leaders.map((person, i) => (
             <Reveal key={i} delayClass={`delay-${i * 100}`}>
               <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-border group">

@@ -31,8 +31,8 @@ const Values = () => {
   ];
 
   return (
-    <section id="values" className="bg-bg py-16 lg:py-24 max-sm:py-14">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="values" className="bg-bg py-14 sm:py-16 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-[600px] mx-auto">
           <Reveal><p className="section-label">Guiding Principles</p></Reveal>
           <Reveal delayClass="delay-100"><h2 className="section-title">Our Core Values</h2></Reveal>

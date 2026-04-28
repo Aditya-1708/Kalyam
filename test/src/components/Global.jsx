@@ -3,8 +3,8 @@ import Reveal from './Reveal';
 
 const Global = () => {
   return (
-    <section className="py-20 lg:py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="py-14 sm:py-16 lg:py-24 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <Reveal>
@@ -22,7 +22,7 @@ const Global = () => {
               </p>
             </Reveal>
             
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               {[
                 { label: 'Major Cities', value: '100+' },
                 { label: 'Distributors', value: '500+' },

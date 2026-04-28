@@ -1,9 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsApp from './components/WhatsApp';
 import ScrollToTop from './components/ScrollToTop';
+import Loader from './components/Loader';
 
 // Pages
 import Home from './pages/Home';
@@ -12,9 +13,27 @@ import Services from './pages/Services';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 
-function App() {
+function MainLayout() {
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const isInitialLoad = useRef(true);
+
+  useEffect(() => {
+    setLoading(true);
+
+    const timeoutDuration = isInitialLoad.current ? 3000 : 1500;
+    isInitialLoad.current = false;
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, timeoutDuration);
+
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
   return (
-    <Router>
+    <>
+      {loading && <Loader />}
       <ScrollToTop />
       <Navbar />
       <main>
@@ -28,6 +47,14 @@ function App() {
       </main>
       <WhatsApp />
       <Footer />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <MainLayout />
     </Router>
   );
 }

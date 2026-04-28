@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
+import { formatPhoneDisplay, formatTelLink, formatGmailComposeLink } from '../utils/format';
 
 const Footer = () => {
   return (
@@ -48,8 +49,7 @@ const Footer = () => {
             <li className="flex items-start gap-3">
               <FaMapMarkerAlt className="w-5 h-5 text-primary mt-1" />
               <span>
-                529 KH NO. 14/19, 1st Floor, West Sant Nagar,<br />
-                Street 21, Burari, North Delhi - 110084
+                {import.meta.env.VITE_CORPORATE_OFFICE}
               </span>
             </li>
 
@@ -57,12 +57,12 @@ const Footer = () => {
             <li className="flex items-center gap-3">
               <FaEnvelope className="w-5 h-5 text-primary" />
               <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=Kalyampharmaprivatelimited88@gmail.com&su=Inquiry"
+                href={formatGmailComposeLink(import.meta.env.VITE_EMAIL, 'Inquiry')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-secondary transition-colors break-all"
               >
-                Kalyampharmaprivatelimited88@gmail.com
+                {import.meta.env.VITE_EMAIL}
               </a>
             </li>
 
@@ -70,10 +70,10 @@ const Footer = () => {
             <li className="flex items-center gap-3">
               <FaPhoneAlt className="w-5 h-5 text-primary" />
               <a
-                href="tel:+917379524088"
+                href={formatTelLink(import.meta.env.VITE_PHONE)}
                 className="hover:text-secondary transition-colors"
               >
-                +91 73795 24088
+                {formatPhoneDisplay(import.meta.env.VITE_PHONE)}
               </a>
             </li>
 

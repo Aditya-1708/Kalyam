@@ -4,11 +4,11 @@ import Reveal from './Reveal';
 
 const CTA = () => {
   return (
-    <section className="py-20 lg:py-32 bg-ink relative overflow-hidden">
+    <section className="py-14 sm:py-20 lg:py-32 bg-ink relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-primary/20 blur-[120px] pointer-events-none"></div>
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <Reveal>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
             Ready to Partner with <span className="text-primary">Kalyam Pharma?</span>

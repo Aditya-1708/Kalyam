@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaEnvelope, FaPhoneAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { formatTelLink, formatEmailLink, formatGmailComposeLink } from '../utils/format';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -23,7 +24,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-[100] py-5 px-10 flex justify-between items-center bg-[#fafcfb]/85 backdrop-blur-md border-b border-border transition-all duration-300 max-sm:py-4 max-sm:px-6">
+      <nav className="fixed top-0 left-0 right-0 z-[100] py-4 sm:py-5 px-4 sm:px-6 md:px-10 flex justify-between items-center bg-[#fafcfb]/85 backdrop-blur-md border-b border-border transition-all duration-300">
         <Link to="/" className="flex items-center gap-3 no-underline" onClick={closeMobileMenu}>
           <img src="/images/logo.png" alt="Kalyam Pharma Logo" className="h-12 w-auto object-contain bg-white rounded p-1 shadow-sm" />
           <div className="font-serif text-[1.3rem] text-primary font-bold tracking-tight hidden sm:block">
@@ -32,7 +33,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <ul className="flex gap-6 list-none max-lg:hidden items-center m-0 p-0">
+        <ul className="hidden lg:flex gap-6 list-none items-center m-0 p-0">
           {navLinks.map((link) => (
             <li key={link.name}>
               <NavLink
@@ -50,7 +51,7 @@ const Navbar = () => {
 
           {/* Email Button (fixed styling) */}
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=Kalyampharmaprivatelimited88@gmail.com&su=Inquiry"
+            href={formatGmailComposeLink(import.meta.env.VITE_EMAIL, 'Inquiry')}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary/10 text-secondary hover:bg-secondary hover:text-white transition-all duration-200"
@@ -61,7 +62,7 @@ const Navbar = () => {
 
           {/* Call Button */}
           <a
-            href="tel:+917379524088"
+            href={formatTelLink(import.meta.env.VITE_PHONE)}
             className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary-dark transition-all duration-200 shadow-sm"
           >
             <FaPhoneAlt className="w-4 h-4" />
@@ -101,7 +102,7 @@ const Navbar = () => {
           ))}
         </ul>
         <div className="mt-auto flex flex-col gap-4">
-          <a href="mailto:Kalyampharmaprivatelimited88@gmail.com" className="flex items-center justify-center gap-3 w-full p-4 rounded-xl bg-secondary/10 text-secondary font-medium" onClick={closeMobileMenu}>
+          <a href={formatEmailLink(import.meta.env.VITE_EMAIL)} className="flex items-center justify-center gap-3 w-full p-4 rounded-xl bg-secondary/10 text-secondary font-medium" onClick={closeMobileMenu}>
             <FaEnvelope className="w-5 h-5" />
             Email Us
           </a>

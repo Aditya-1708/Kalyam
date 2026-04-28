@@ -65,7 +65,19 @@ Follow these steps to get the project running locally:
    cd Kalyam
    ```
 
-2. **Install dependencies:**
+2. **Configure environment variables:**
+   Create a `.env` file in the root directory and add the following variables:
+   ```env
+   VITE_PHONE="917379524088"
+   VITE_EMAIL="Kalyampharmaprivatelimited88@gmail.com"
+   VITE_CORPORATE_OFFICE="529 KH NO. 14/19, 1st Floor, West Sant Nagar, Street 21, Burari, North Delhi - 110084, Delhi"
+   VITE_REGISTERED_OFFICE="KHATA NO 00285, ARZI NO 183, GRAM DAHIYA MUGHALSARI ALINAGAR, Dulhipur, Chandauli, Uttar Pradesh - 232104"
+   VITE_CONTACT_FORM_URL="https://docs.google.com/forms/d/e/1FAIpQLScOGqpxnFzXXpogbLXmryCwSzDqFcNGqScZnnWkku0FgXDydQ/viewform"
+   VITE_CAREER_FORM_URL="https://docs.google.com/forms/d/e/1FAIpQLSdbk-tBjVSGy9cJdoziFciVc4AF45rwAMlNKBm1sAL8JKbrcQ/viewform"
+   VITE_WHATSAPP_MESSAGE="Hello Kalyam Pharma, I have an inquiry."
+   ```
+
+3. **Install dependencies:**
    ```bash
    npm install
    ```

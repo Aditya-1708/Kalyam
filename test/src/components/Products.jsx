@@ -7,8 +7,8 @@ const Products = () => {
 
   return (
     <>
-      <section id="products" className="bg-bg py-16 lg:py-24 max-sm:py-14 border-b border-border">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+      <section id="products" className="bg-bg py-14 sm:py-16 lg:py-24 border-b border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-[600px] mx-auto mb-14">
             <Reveal><p className="section-label">Our Spotlight</p></Reveal>
             <Reveal delayClass="delay-100"><h2 className="section-title">Our Products</h2></Reveal>

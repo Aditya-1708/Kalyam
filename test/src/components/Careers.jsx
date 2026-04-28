@@ -4,8 +4,8 @@ import { FaBriefcase, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Careers = () => {
   return (
-    <section id="careers" className="bg-bg py-16 lg:py-24 border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="careers" className="bg-bg py-14 sm:py-16 lg:py-24 border-b border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* HEADER */}
         <div className="text-center max-w-[600px] mx-auto mb-14">
@@ -50,7 +50,7 @@ const Careers = () => {
 
               {/* CTA Button */}
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdbk-tBjVSGy9cJdoziFciVc4AF45rwAMlNKBm1sAL8JKbrcQ/viewform"
+                href={import.meta.env.VITE_CAREER_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition"
