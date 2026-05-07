@@ -1,7 +1,7 @@
 import React from "react";
 
 const Loader = () => {
-    const text = "KALYAM PHARMA";
+    const text = "KALAYAM PHARMA";
 
     return (
         <div className="fixed inset-0 z-[9999] h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-orange-400 via-orange-100 to-white">

@@ -3,7 +3,13 @@ import prisma from "../utils/prisma.js";
 
 const VALID_TARGETS = ["HUMAN", "ANIMAL"];
 
-const validateMedicinePayload = ({ brand, sku, strength, threapyArea, target }) => {
+const validateMedicinePayload = ({
+  brand,
+  sku,
+  strength,
+  threapyArea,
+  target,
+}) => {
   const errors = [];
 
   if (!brand || typeof brand !== "string") {
@@ -15,10 +21,18 @@ const validateMedicinePayload = ({ brand, sku, strength, threapyArea, target }) 
   if (!strength || typeof strength !== "string") {
     errors.push("strength is required and must be a string");
   }
-  if (threapyArea !== undefined && threapyArea !== null && typeof threapyArea !== "string") {
+  if (
+    threapyArea !== undefined &&
+    threapyArea !== null &&
+    typeof threapyArea !== "string"
+  ) {
     errors.push("threapyArea must be a string when provided");
   }
-  if (!target || typeof target !== "string" || !VALID_TARGETS.includes(target)) {
+  if (
+    !target ||
+    typeof target !== "string" ||
+    !VALID_TARGETS.includes(target)
+  ) {
     errors.push(`target must be one of: ${VALID_TARGETS.join(", ")}`);
   }
 
@@ -33,7 +47,13 @@ const parseId = (id) => {
 export const createMedicine = async (req, res, next) => {
   try {
     const { brand, sku, strength, threapyArea, target } = req.body;
-    const errors = validateMedicinePayload({ brand, sku, strength, threapyArea, target });
+    const errors = validateMedicinePayload({
+      brand,
+      sku,
+      strength,
+      threapyArea,
+      target,
+    });
     if (errors.length) {
       return res.status(400).json({ message: "Validation failed", errors });
     }
@@ -44,7 +64,10 @@ export const createMedicine = async (req, res, next) => {
 
     res.status(201).json({ data: medicine });
   } catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002") {
+    if (
+      error instanceof Prisma.PrismaClientKnownRequestError &&
+      error.code === "P2002"
+    ) {
       return res.status(409).json({
         message: "Medicine SKU must be unique",
         fields: error.meta?.target,
@@ -62,7 +85,13 @@ export const updateMedicine = async (req, res, next) => {
     }
 
     const { brand, sku, strength, threapyArea, target } = req.body;
-    const errors = validateMedicinePayload({ brand, sku, strength, threapyArea, target });
+    const errors = validateMedicinePayload({
+      brand,
+      sku,
+      strength,
+      threapyArea,
+      target,
+    });
     if (errors.length) {
       return res.status(400).json({ message: "Validation failed", errors });
     }
@@ -89,15 +118,72 @@ export const updateMedicine = async (req, res, next) => {
   }
 };
 
-export const getMedicines = async (req, res, next) => {
+export const getMedicines = async (req, res) => {
   try {
-    const medicines = await prisma.medicine.findMany({
-      orderBy: { createdAt: "desc" },
+    const { search = "", target, page = 1, limit = 10 } = req.query;
+
+    const currentPage = Number(page);
+    const pageLimit = Number(limit);
+
+    const where = {
+      ...(target && {
+        target,
+      }),
+
+      ...(search && {
+        OR: [
+          {
+            brand: {
+              contains: search,
+              mode: "insensitive",
+            },
+          },
+          {
+            sku: {
+              contains: search,
+              mode: "insensitive",
+            },
+          },
+          {
+            threapyArea: {
+              contains: search,
+              mode: "insensitive",
+            },
+          },
+        ],
+      }),
+    };
+
+    const total = await prisma.medicine.count({
+      where,
     });
 
-    res.json({ data: medicines });
+    const medicines = await prisma.medicine.findMany({
+      where,
+      orderBy: {
+        createdAt: "desc",
+      },
+      skip: (currentPage - 1) * pageLimit,
+      take: pageLimit,
+    });
+
+    res.status(200).json({
+      success: true,
+      data: medicines,
+      meta: {
+        total,
+        page: currentPage,
+        limit: pageLimit,
+        pages: Math.ceil(total / pageLimit),
+      },
+    });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    console.error(error);
+
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
 
@@ -135,7 +221,10 @@ export const deleteMedicine = async (req, res, next) => {
 
     res.status(204).send();
   } catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
+    if (
+      error instanceof Prisma.PrismaClientKnownRequestError &&
+      error.code === "P2025"
+    ) {
       return res.status(404).json({ message: "Medicine not found" });
     }
     return res.status(500).json({ message: error.message });

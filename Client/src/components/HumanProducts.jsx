@@ -5,16 +5,8 @@ import Reveal from "./Reveal";
 const HumanProducts = () => {
   const navigate = useNavigate();
 
-  const {
-    data,
-    loading,
-    search,
-    page,
-    meta,
-    handleSearch,
-    handlePageChange,
-    handleDelete,
-  } = useMedicines("HUMAN");
+  const { data, loading, search, page, meta, handleSearch, handlePageChange } =
+    useMedicines("HUMAN");
 
   const handlePrevPage = () => {
     if (page > 1) handlePageChange(page - 1);
@@ -37,7 +29,6 @@ const HumanProducts = () => {
             </h1>
           </Reveal>
 
-          {/* Switch Button */}
           <button
             onClick={() => navigate("/products/veterinary")}
             className="px-5 py-2.5 rounded-lg bg-green-600 text-white text-sm font-semibold hover:bg-green-700 transition"
@@ -49,7 +40,7 @@ const HumanProducts = () => {
         {/* Search */}
         <input
           type="text"
-          placeholder="Search by brand, therapy, or SKU..."
+          placeholder="Search by brand, therapy area, or SKU..."
           className="mb-8 w-full p-4 border rounded-xl"
           value={search}
           onChange={(e) => handleSearch(e.target.value)}
@@ -58,18 +49,16 @@ const HumanProducts = () => {
         {/* Table */}
         <div className="overflow-x-auto border rounded-xl shadow-sm">
           <table className="w-full text-left border-collapse">
-            {/* Header */}
             <thead className="bg-blue-900 text-white">
               <tr>
                 <th className="p-4 text-sm font-semibold w-12">#</th>
                 <th className="p-4 text-sm font-semibold">Brand</th>
                 <th className="p-4 text-sm font-semibold">SKU</th>
+                <th className="p-4 text-sm font-semibold">Therapy Area</th>
                 <th className="p-4 text-sm font-semibold">Strength</th>
-                <th className="p-4 text-sm font-semibold">Actions</th>
               </tr>
             </thead>
 
-            {/* Body */}
             <tbody>
               {loading ? (
                 <tr>
@@ -89,7 +78,6 @@ const HumanProducts = () => {
                     key={medicine.id}
                     className="border-t hover:bg-gray-50 transition"
                   >
-                    {/* Row Number */}
                     <td className="p-4 text-muted font-medium">
                       {(page - 1) * (meta?.limit || 10) + i + 1}
                     </td>
@@ -100,18 +88,11 @@ const HumanProducts = () => {
 
                     <td className="p-4 text-ink">{medicine.sku}</td>
 
-                    <td className="p-4 text-muted">
-                      {medicine.strength}
+                    <td className="p-4 text-ink">
+                      {medicine.therapyArea || "-"}
                     </td>
 
-                    <td className="p-4">
-                      <button
-                        onClick={() => handleDelete(medicine.id)}
-                        className="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 transition"
-                      >
-                        Delete
-                      </button>
-                    </td>
+                    <td className="p-4 text-muted">{medicine.strength}</td>
                   </tr>
                 ))
               )}

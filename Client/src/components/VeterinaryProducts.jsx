@@ -5,16 +5,8 @@ import Reveal from "./Reveal";
 const VeterinaryProducts = () => {
   const navigate = useNavigate();
 
-  const {
-    data,
-    loading,
-    search,
-    page,
-    meta,
-    handleSearch,
-    handlePageChange,
-    handleDelete,
-  } = useMedicines("ANIMAL");
+  const { data, loading, search, page, meta, handleSearch, handlePageChange } =
+    useMedicines("ANIMAL");
 
   const handlePrevPage = () => {
     if (page > 1) handlePageChange(page - 1);
@@ -59,21 +51,21 @@ const VeterinaryProducts = () => {
               <tr>
                 <th className="p-4 text-sm font-semibold">Brand</th>
                 <th className="p-4 text-sm font-semibold">SKU</th>
+                <th className="p-4 text-sm font-semibold">Therapy Area</th>
                 <th className="p-4 text-sm font-semibold">Strength</th>
-                <th className="p-4 text-sm font-semibold">Actions</th>
               </tr>
             </thead>
 
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan="4" className="p-4 text-center text-muted">
+                  <td colSpan="3" className="p-4 text-center text-muted">
                     Loading...
                   </td>
                 </tr>
               ) : data.length === 0 ? (
                 <tr>
-                  <td colSpan="4" className="p-4 text-center text-muted">
+                  <td colSpan="3" className="p-4 text-center text-muted">
                     No medicines found
                   </td>
                 </tr>
@@ -88,19 +80,10 @@ const VeterinaryProducts = () => {
                     </td>
 
                     <td className="p-4 text-ink">{medicine.sku}</td>
-
-                    <td className="p-4 text-muted">
-                      {medicine.strength}
+                    <td className="p-4 text-ink">
+                      {medicine.threapyArea || "-"}
                     </td>
-
-                    <td className="p-4">
-                      <button
-                        onClick={() => handleDelete(medicine.id)}
-                        className="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 transition"
-                      >
-                        Delete
-                      </button>
-                    </td>
+                    <td className="p-4 text-muted">{medicine.strength}</td>
                   </tr>
                 ))
               )}
