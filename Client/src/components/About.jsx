@@ -1,6 +1,6 @@
-import React from 'react';
+import { FaBolt, FaGlobe, FaLock } from 'react-icons/fa';
+import Leadership from './Leadership';
 import Reveal from './Reveal';
-import { FaBolt, FaGlobe, FaClock } from 'react-icons/fa';
 
 const About = () => {
   return (
@@ -12,10 +12,10 @@ const About = () => {
             <Reveal delayClass="delay-100"><h2 className="section-title">Our Corporate Journey</h2></Reveal>
             <Reveal delayClass="delay-200"><div className="divider"></div></Reveal>
             <Reveal delayClass="delay-200">
-              <p className="section-sub"><span className="font-semibold text-secondary">Kalyam Pharma</span> is a premier Medicine Third Party Manufacturing Company providing high-quality pharmaceutical solutions for both human and veterinary healthcare. Founded on the conviction that animal health is inseparable from human health, Kalyam Pharma has spent decades building formulations that clinicians trust and patients—both humans and animals—respond to.</p>
+              <p className="section-sub"><span className="font-semibold text-secondary">Kalyam Pharma</span> is a trusted third-party pharmaceutical company established on April 8, 2024.</p>
             </Reveal>
             <div className="mt-8">
-              <img src="/images/product-yellow.jpg" alt="KFD Vitamin C Plus" className="w-full rounded-2xl object-cover aspect-[3/4]" />
+              <img src="/images/about.jpeg" alt="Quality Pharmaceutical Solutions" className="w-full rounded-2xl object-cover aspect-[3/4]" />
             </div>
           </div>
           
@@ -26,7 +26,7 @@ const About = () => {
                   <FaBolt className="w-5 h-5 text-[#2E7D32]" />
                 </div>
                 <h4 className="font-serif text-[1.1875rem] font-bold text-ink mb-2.5">Our Mission</h4>
-                <p className="text-[0.9375rem] text-muted leading-[1.7]">To meticulously engineer high-performance veterinary supplements that address complex clinical challenges, empowering veterinarians and livestock producers to optimize animal health protocols globally.</p>
+                <p className="text-[0.9375rem] text-muted leading-[1.7]">To deliver high-quality and affordable medicines to every corner of the country, ensuring better healthcare access for all through consistent innovation and excellence.</p>
               </div>
             </Reveal>
             
@@ -35,22 +35,23 @@ const About = () => {
                 <div className="w-10 h-10 rounded-lg bg-emerald-light flex items-center justify-center mb-4">
                   <FaGlobe className="w-5 h-5 text-[#2E7D32]" />
                 </div>
-                <h4 className="font-serif text-[1.1875rem] font-bold text-ink mb-2.5">Our Vision</h4>
-                <p className="text-[0.9375rem] text-muted leading-[1.7]">To be the universally recognized leader in specialized animal nutrition, setting the global benchmark for safety, purity, and clinical outcomes across both livestock and companion animal categories.</p>
+                <h4 className="font-serif text-[1.1875rem] font-bold text-ink mb-2.5">Our Presence</h4>
+                <p className="text-[0.9375rem] text-muted leading-[1.7]">With a strong and expanding distribution network, we currently supply our pharmaceutical products across all 28 states of India. We are committed to maintaining the highest quality standards and ensuring timely delivery.</p>
               </div>
             </Reveal>
             
             <Reveal delayClass="delay-200">
               <div className="p-7 rounded-2xl border border-border bg-bg transition-all duration-300 hover:border-emerald hover:shadow-[0_4px_24px_rgba(46,125,50,0.1)] hover:-translate-y-0.5 cursor-default">
                 <div className="w-10 h-10 rounded-lg bg-emerald-light flex items-center justify-center mb-4">
-                  <FaClock className="w-5 h-5 text-[#2E7D32]" />
+                  <FaLock className="w-5 h-5 text-[#2E7D32]" />
                 </div>
-                <h4 className="font-serif text-[1.1875rem] font-bold text-ink mb-2.5">Our History</h4>
-                <p className="text-[0.9375rem] text-muted leading-[1.7]">Established with a foundational commitment to scientific rigor, Kalyam originated by identifying critical nutritional gaps within domestic livestock environments. Over the years, we scaled our state-of-the-art manufacturing infrastructure and expanded into companion animal care, becoming a trusted name across India's veterinary community.</p>
+                <h4 className="font-serif text-[1.1875rem] font-bold text-ink mb-2.5">Our Philosophy</h4>
+                <p className="text-[0.9375rem] text-muted leading-[1.7]">At Kalyam Pharma, we believe in building long-term relationships with our partners and clients through trust, reliability, and consistent performance in the healthcare industry.</p>
               </div>
             </Reveal>
           </div>
         </div>
+        <Leadership />
       </div>
     </section>
   );

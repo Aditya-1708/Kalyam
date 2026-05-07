@@ -18,7 +18,7 @@ const Global = () => {
             </Reveal>
             <Reveal delayClass="delay-300">
               <p className="text-muted text-lg mb-8">
-                With a robust supply chain and distribution network, Kalyam Pharma ensures that high-quality medicines are accessible across 29 states in India. Our commitment to timely delivery and quality maintenance remains unwavering.
+                With a robust supply chain and distribution network, Kalyam Pharma ensures that high-quality medicines are accessible across 28 states in India. Our commitment to timely delivery and quality maintenance remains unwavering.
               </p>
             </Reveal>
             
@@ -43,7 +43,7 @@ const Global = () => {
             <Reveal delayClass="delay-400">
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=1000" 
+                  src="images/hero.jpeg" 
                   alt="Global Presence" 
                   className="w-full h-auto object-cover"
                 />

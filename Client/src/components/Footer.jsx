@@ -1,7 +1,6 @@
-import React from 'react';
+import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
-import { formatPhoneDisplay, formatTelLink, formatGmailComposeLink } from '../utils/format';
+import { formatGmailComposeLink, formatPhoneDisplay, formatTelLink } from '../utils/format';
 
 const Footer = () => {
   return (
@@ -32,8 +31,8 @@ const Footer = () => {
           <ul className="space-y-3">
             <li><Link to="/" className="hover:text-secondary transition-colors">Home</Link></li>
             <li><Link to="/about" className="hover:text-secondary transition-colors">About</Link></li>
-            <li><Link to="/services" className="hover:text-secondary transition-colors">Services</Link></li>
-            <li><Link to="/careers" className="hover:text-secondary transition-colors">Careers</Link></li>
+            <li><Link to="/products" className="hover:text-secondary transition-colors">Products</Link></li>
+            <li><Link to="/hiring" className="hover:text-secondary transition-colors">Hiring</Link></li>
             <li><Link to="/contact" className="hover:text-secondary transition-colors">Contact</Link></li>
           </ul>
         </div>

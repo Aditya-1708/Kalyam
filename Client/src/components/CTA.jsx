@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Reveal from './Reveal';
 
@@ -30,10 +29,10 @@ const CTA = () => {
               Contact Us Now
             </Link>
             <Link 
-              to="/services" 
+              to="/products" 
               className="px-10 py-4 bg-white/10 text-white font-bold rounded-full hover:bg-white/20 transition-all backdrop-blur-sm"
             >
-              Explore Services
+              Explore Products
             </Link>
           </div>
         </Reveal>
