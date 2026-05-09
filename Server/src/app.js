@@ -28,7 +28,7 @@ app.use(helmet());
 // CORS (adjust origin in production)
 app.use(
   cors({
-    origin: "http://localhost:5173", // frontend URL
+    origin: "https://kalyam.cloud", // frontend URL
     credentials: true,
   }),
 );

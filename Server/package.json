@@ -1,20 +1,36 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/app.js",
-    "start": "node src/app.js",
+    "dev": "nodemon --env-file=.env src/app.js",
+    "start": "NODE_ENV=production node src/app.js",
+    "pm2:start": "pm2 start src/app.js --name kalyam-api",
+    "pm2:restart": "pm2 restart kalyam-api",
+    "pm2:stop": "pm2 stop kalyam-api",
+    "pm2:delete": "pm2 delete kalyam-api",
+    "pm2:logs": "pm2 logs kalyam-api",
+    "pm2:monit": "pm2 monit",
+    "pm2:save": "pm2 save",
+    "pm2:startup": "pm2 startup",
     "prisma": "prisma",
-    "seed": "node prisma/seed.js"
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "generate": "prisma generate",
+    "seed": "node prisma/seed.js",
+    "db:push": "prisma db push",
+    "studio": "prisma studio",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.9.0",
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
     "express": "^5.2.1",
     "express-rate-limit": "^8.4.1",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.10.1",
+    "pm2": "^7.0.1",
     "zod": "^4.4.3"
   },
   "devDependencies": {
