@@ -89,7 +89,7 @@ const HumanProducts = () => {
                     <td className="p-4 text-ink">{medicine.sku}</td>
 
                     <td className="p-4 text-ink">
-                      {medicine.therapyArea || "-"}
+                      {medicine.threapyArea || "-"}
                     </td>
 
                     <td className="p-4 text-muted">{medicine.strength}</td>
