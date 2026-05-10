@@ -4,43 +4,75 @@ import dotenv from "dotenv";
 import express from "express";
 import rateLimit from "express-rate-limit";
 import morgan from "morgan";
-
 import helmet from "helmet";
+
 import medicineRouter from "./routes/medicineRouter.js";
 import userRouter from "./routes/userRouter.js";
+
 dotenv.config();
 
 const app = express();
 
+/**
+ * TRUST PROXY (IMPORTANT FOR NGINX + PM2)
+ */
+app.set("trust proxy", 1);
+
+/**
+ * ALLOWED ORIGINS
+ */
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://kalyam.cloud",
+  "https://www.kalyam.cloud",
+];
+
+/**
+ * RATE LIMITER
+ */
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per window
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
   message: "Too many requests, please try again later",
 });
 
 /**
- * MIDDLEWARES
+ * GLOBAL MIDDLEWARES
  */
 app.use(morgan("combined"));
-app.use(express.json());
-app.use(cookieParser());
+
 app.use(helmet());
-// CORS (adjust origin in production)
+
 app.use(
   cors({
-    origin: "https://kalyam.cloud", // frontend URL
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS blocked"));
+      }
+    },
     credentials: true,
-  }),
+  })
 );
+
+app.use(express.json());
+
+app.use(cookieParser());
+
+app.use(limiter);
 
 /**
  * ROUTES
  */
-app.use("/api/v1/users", userRouter, limiter);
-app.use("/api/v1/meds", medicineRouter, limiter);
+app.use("/api/v1/users", userRouter);
+
+app.use("/api/v1/meds", medicineRouter);
 
 /**
- * HEALTH CHECK (optional but useful)
+ * HEALTH CHECK
  */
 app.get("/", (req, res) => {
   res.send("API is running...");
@@ -50,7 +82,9 @@ app.get("/", (req, res) => {
  * 404 HANDLER
  */
 app.use((req, res) => {
-  res.status(404).json({ message: "Route not found" });
+  res.status(404).json({
+    message: "Route not found",
+  });
 });
 
 /**

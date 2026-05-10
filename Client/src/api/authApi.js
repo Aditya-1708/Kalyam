@@ -1,26 +1,26 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_BASE = 'http://localhost:5000/api/v1';
+const API_BASE = import.meta.env.VITE_API_URL;
 
 const authApi = axios.create({
-  baseURL: API_BASE,
-  withCredentials: true, // Include cookies in requests
+  baseURL: `${API_BASE}/api/v1`,
+  withCredentials: true,
 });
 
 export const loginAdmin = (email, password) =>
-  authApi.post('/users/login', { email, password });
+  authApi.post("/users/login", { email, password });
 
 export const logoutAdmin = () =>
-  authApi.post('/users/logout');
+  authApi.post("/users/logout");
 
 export const verifyAuth = () =>
-  authApi.get('/users/verify');
+  authApi.get("/users/verify");
 
 export const getAdminUsers = () =>
-  authApi.get('/users');
+  authApi.get("/users");
 
 export const createAdminUser = (data) =>
-  authApi.post('/users', data);
+  authApi.post("/users", data);
 
 export const deleteUser = (id) =>
   authApi.delete(`/users/${id}`);
