@@ -23,10 +23,9 @@ app.set("trust proxy", 1);
  */
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://kalyam.cloud",
-  "https://www.kalyam.cloud",
+  "https://kalyampharma.com",
+  "https://www.kalyampharma.com",
 ];
-
 /**
  * RATE LIMITER
  */
