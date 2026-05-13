@@ -15,7 +15,7 @@ const sidebarItems = [
     icon: Pill,
   },
   {
-    label: "Products",
+    label: "Home Page Images",
     value: "products",
     icon: Package,
   },
