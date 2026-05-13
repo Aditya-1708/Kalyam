@@ -5,35 +5,26 @@ import { getProducts } from "../api/productApi";
 const Showcase = () => {
   const [products, setProducts] = useState([]);
 
-  const [loading, setLoading] =
-    useState(true);
+  const [loading, setLoading] = useState(true);
 
-  const API_BASE =
-    import.meta.env.VITE_API_URL;
+  const API_BASE = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    const fetchProducts =
-      async () => {
-        try {
-          setLoading(true);
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
 
-          const response =
-            await getProducts({
-              limit: 12,
-            });
+        const response = await getProducts({
+          limit: 12,
+        });
 
-          setProducts(
-            response.data.data || []
-          );
-        } catch (err) {
-          console.error(
-            "Failed to fetch products",
-            err
-          );
-        } finally {
-          setLoading(false);
-        }
-      };
+        setProducts(response.data.data || []);
+      } catch (err) {
+        console.error("Failed to fetch products", err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
     fetchProducts();
   }, []);
@@ -58,17 +49,17 @@ const Showcase = () => {
             <div className="w-10 h-[1px] bg-[#4caf50]/40"></div>
           </div>
 
-          <h2 className="text-5xl md:text-6xl font-black text-[#1b5e20] leading-tight">
-            Featured{" "}
-            <span className="text-transparent [webkit-text-stroke:1.5px_#ff9800]">
+          <h2 className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-5xl md:text-6xl font-black text-[#1b5e20] leading-tight">
+            <span>Featured</span>
+
+            <span className="text-transparent [-webkit-text-stroke:1.5px_#ff9800] leading-none">
               Products
             </span>
           </h2>
 
           <p className="mt-6 text-[#5f6f5f] max-w-2xl mx-auto leading-8 text-lg">
-            Discover trusted pharmaceutical and healthcare
-            products crafted for quality, wellness, and
-            innovation.
+            Discover trusted pharmaceutical and healthcare products crafted for
+            quality, wellness, and innovation.
           </p>
         </div>
 
@@ -99,8 +90,7 @@ const Showcase = () => {
             </h3>
 
             <p className="mt-4 text-[#5f6f5f]">
-              Products will appear here once added from the
-              admin dashboard.
+              Products will appear here once added from the admin dashboard.
             </p>
           </div>
         ) : (
