@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
 import {
-    FaBars,
-    FaChevronDown,
-    FaEnvelope,
-    FaLock,
-    FaPhoneAlt,
-    FaTimes,
+  FaBars,
+  FaChevronDown,
+  FaEnvelope,
+  FaLock,
+  FaPhoneAlt,
+  FaTimes,
 } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { useSecretEntrance } from "../hooks/useSecretEntrance";
@@ -60,10 +60,12 @@ const Navbar = () => {
           <img
             src="/images/logo.png"
             alt="Logo"
-            className="h-12 bg-white rounded p-1"
+            className="h-12 bg-white rounded-2xl p-1 shadow-md object-cover"
           />
+
           <div className="font-serif text-[1.3rem] text-primary font-bold hidden sm:block">
-            Kalyam Pharma<span className="text-secondary">.</span>
+            Kalyam Pharma
+            <span className="text-secondary">.</span>
           </div>
         </Link>
 
