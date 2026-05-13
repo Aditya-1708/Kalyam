@@ -39,3 +39,21 @@ enum Role {
   ADMIN
   USER
 }
+
+enum ProductCategory {
+  HUMAN
+  VETERINARY
+}
+
+model Product {
+  id        Int      @id @default(autoincrement())
+
+  name      String
+  slug      String   @unique
+  image     String
+
+  category  ProductCategory @default(HUMAN)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -3,10 +3,12 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import rateLimit from "express-rate-limit";
-import morgan from "morgan";
 import helmet from "helmet";
+import morgan from "morgan";
+import path from "path";
 
 import medicineRouter from "./routes/medicineRouter.js";
+import productRouter from "./routes/productRouter.js";
 import userRouter from "./routes/userRouter.js";
 
 dotenv.config();
@@ -42,8 +44,27 @@ const limiter = rateLimit({
  */
 app.use(morgan("combined"));
 
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginResourcePolicy: {
+      policy: "cross-origin",
+    },
 
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+
+        imgSrc: [
+          "'self'",
+          "data:",
+          "http://localhost:5000",
+          "https://kalyampharma.com",
+          "https://www.kalyampharma.com",
+        ],
+      },
+    },
+  })
+);
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -54,7 +75,7 @@ app.use(
       }
     },
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
@@ -63,12 +84,14 @@ app.use(cookieParser());
 
 app.use(limiter);
 
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+
 /**
  * ROUTES
  */
 app.use("/api/v1/users", userRouter);
-
 app.use("/api/v1/meds", medicineRouter);
+app.use("/api/v1/products", productRouter);
 
 /**
  * HEALTH CHECK

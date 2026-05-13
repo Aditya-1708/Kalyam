@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { loginAdmin } from '../api/authApi';
-import { useAuth } from '../context/AuthContext';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { loginAdmin } from "../api/authApi";
+import { useAuth } from "../context/AuthContext";
 
 const AdminLogin = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { isAuthenticated, login } = useAuth();
@@ -14,22 +14,30 @@ const AdminLogin = () => {
   // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/admin/panel');
+      navigate("/admin/panel");
     }
   }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+
+    setError("");
+
     setLoading(true);
 
     try {
-      const response = await loginAdmin(email, password);
-      login(response.data.user);
-      navigate('/admin/panel');
+      await loginAdmin(email.trim().toLowerCase(), password.trim());
+
+      // wait for cookie verification
+      await login();
+
+      navigate("/admin/panel");
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Please try again.');
-      setPassword('');
+      setError(
+        err.response?.data?.message || "Login failed. Please try again.",
+      );
+
+      setPassword("");
     } finally {
       setLoading(false);
     }
@@ -57,7 +65,10 @@ const AdminLogin = () => {
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email Field */}
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-semibold text-gray-700 mb-2"
+              >
                 Email Address
               </label>
               <input
@@ -73,7 +84,10 @@ const AdminLogin = () => {
 
             {/* Password Field */}
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-semibold text-gray-700 mb-2"
+              >
                 Password
               </label>
               <input
@@ -99,7 +113,7 @@ const AdminLogin = () => {
                   <span>Signing In...</span>
                 </>
               ) : (
-                'Sign In'
+                "Sign In"
               )}
             </button>
           </form>

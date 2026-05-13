@@ -1,5 +1,11 @@
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { logoutAdmin, verifyAuth } from '../api/authApi';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { logoutAdmin, verifyAuth } from "../api/authApi";
 
 const AuthContext = createContext(null);
 
@@ -31,17 +37,18 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       setIsAuthenticated(false);
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error("Logout error:", error);
     }
   }, []);
 
-  const login = useCallback((userData) => {
-    setUser(userData);
-    setIsAuthenticated(true);
-  }, []);
+  const login = useCallback(async () => {
+    await checkAuth();
+  }, [checkAuth]);
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, loading, login, logout, checkAuth }}>
+    <AuthContext.Provider
+      value={{ user, isAuthenticated, loading, login, logout, checkAuth }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -50,7 +57,7 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within AuthProvider');
+    throw new Error("useAuth must be used within AuthProvider");
   }
   return context;
 };

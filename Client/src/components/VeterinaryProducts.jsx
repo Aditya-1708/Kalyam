@@ -1,89 +1,161 @@
-import { useNavigate } from "react-router-dom";
-import { useMedicines } from "../hooks/useMedicines";
+import { useEffect, useState } from "react";
+
+import { getMedicines } from "../api/medicineApi";
+
 import Reveal from "./Reveal";
 
 const VeterinaryProducts = () => {
-  const navigate = useNavigate();
+  const [medicines, setMedicines] = useState([]);
 
-  const { data, loading, search, page, meta, handleSearch, handlePageChange } =
-    useMedicines("ANIMAL");
+  const [loading, setLoading] = useState(true);
 
-  const handlePrevPage = () => {
-    if (page > 1) handlePageChange(page - 1);
-  };
+  const [search, setSearch] = useState("");
 
-  const handleNextPage = () => {
-    if (page < (meta?.pages || 1)) {
-      handlePageChange(page + 1);
+  const [page, setPage] = useState(1);
+
+  const [meta, setMeta] = useState({
+    total: 0,
+    page: 1,
+    limit: 10,
+    pages: 1,
+  });
+
+  const fetchMedicines = async (currentSearch = search, currentPage = page) => {
+    try {
+      setLoading(true);
+
+      const response = await getMedicines({
+        search: currentSearch,
+        page: currentPage,
+        limit: 10,
+        target: "ANIMAL",
+      });
+
+      setMedicines(response.data?.data || []);
+
+      setMeta(
+        response.data?.meta || {
+          total: 0,
+          page: 1,
+          limit: 10,
+          pages: 1,
+        },
+      );
+    } catch (error) {
+      console.error("Failed to fetch medicines:", error);
+
+      setMedicines([]);
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchMedicines(search, page);
+  }, [search, page]);
 
   return (
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header + Switch */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
-          <Reveal>
-            <h1 className="text-4xl font-bold">Veterinary Products</h1>
-          </Reveal>
+        {/* HEADER */}
+        <Reveal>
+          <div className="mb-10">
+            <p className="uppercase tracking-[0.3em] text-sm text-blue-600">
+              Veterinary Care
+            </p>
 
+            <h1 className="text-4xl font-bold text-gray-900 mt-3">
+              Veterinary Medicines
+            </h1>
+          </div>
+        </Reveal>
+
+        <div className="flex justify-end mb-8">
           <button
-            onClick={() => navigate("/products/human")}
-            className="px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition"
+            onClick={() => (window.location.href = "/products/human")}
+            className="px-6 py-3 rounded-2xl bg-green-600 hover:bg-green-700 text-white font-semibold transition"
           >
-            ← Switch to Human
+            ← Go to Human Medicines
           </button>
         </div>
 
-        {/* Search */}
+        {/* SEARCH */}
         <input
           type="text"
-          placeholder="Search by brand or SKU..."
-          className="mb-8 w-full p-4 border rounded-xl"
+          placeholder="Search veterinary medicines..."
+          className="mb-8 w-full p-4 border border-gray-300 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500"
           value={search}
-          onChange={(e) => handleSearch(e.target.value)}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setPage(1);
+          }}
         />
 
-        {/* Table */}
-        <div className="overflow-x-auto border rounded-xl shadow-sm">
-          <table className="w-full text-left border-collapse">
-            <thead className="bg-green-800 text-white">
+        {/* TABLE */}
+        <div className="overflow-x-auto border border-gray-200 rounded-3xl">
+          <table className="w-full text-left">
+            <thead className="bg-gray-50 border-b">
               <tr>
-                <th className="p-4 text-sm font-semibold">Brand</th>
-                <th className="p-4 text-sm font-semibold">SKU</th>
-                <th className="p-4 text-sm font-semibold">Therapy Area</th>
-                <th className="p-4 text-sm font-semibold">Strength</th>
+                <th className="px-6 py-5 text-sm font-semibold text-gray-700">
+                  Brand
+                </th>
+
+                <th className="px-6 py-5 text-sm font-semibold text-gray-700">
+                  SKU
+                </th>
+
+                <th className="px-6 py-5 text-sm font-semibold text-gray-700">
+                  Strength
+                </th>
+
+                <th className="px-6 py-5 text-sm font-semibold text-gray-700">
+                  Therapy Area
+                </th>
+
+                <th className="px-6 py-5 text-sm font-semibold text-gray-700">
+                  Target
+                </th>
               </tr>
             </thead>
 
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan="3" className="p-4 text-center text-muted">
+                  <td colSpan="5" className="text-center py-12 text-gray-500">
                     Loading...
                   </td>
                 </tr>
-              ) : data.length === 0 ? (
+              ) : medicines.length === 0 ? (
                 <tr>
-                  <td colSpan="3" className="p-4 text-center text-muted">
-                    No medicines found
+                  <td colSpan="5" className="text-center py-12 text-gray-500">
+                    No veterinary medicines found
                   </td>
                 </tr>
               ) : (
-                data.map((medicine) => (
+                medicines.map((medicine) => (
                   <tr
                     key={medicine.id}
-                    className="border-t hover:bg-gray-50 transition"
+                    className="border-b hover:bg-gray-50 transition"
                   >
-                    <td className="p-4 font-semibold text-ink">
+                    <td className="px-6 py-5 font-semibold text-gray-900">
                       {medicine.brand}
                     </td>
 
-                    <td className="p-4 text-ink">{medicine.sku}</td>
-                    <td className="p-4 text-ink">
+                    <td className="px-6 py-5 text-gray-600">{medicine.sku}</td>
+
+                    <td className="px-6 py-5 text-gray-600">
+                      {medicine.strength}
+                    </td>
+
+                    <td className="px-6 py-5 text-gray-600">
                       {medicine.threapyArea || "-"}
                     </td>
-                    <td className="p-4 text-muted">{medicine.strength}</td>
+
+                    <td className="px-6 py-5">
+                      <span className="px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold">
+                        {medicine.target}
+                      </span>
+                    </td>
                   </tr>
                 ))
               )}
@@ -91,25 +163,25 @@ const VeterinaryProducts = () => {
           </table>
         </div>
 
-        {/* Pagination */}
-        {meta?.pages > 1 && (
-          <div className="flex justify-center items-center mt-8 gap-4">
+        {/* PAGINATION */}
+        {meta.pages > 1 && (
+          <div className="flex justify-center items-center mt-10 gap-4">
             <button
-              onClick={handlePrevPage}
+              onClick={() => setPage((prev) => prev - 1)}
               disabled={page === 1}
-              className="px-4 py-2 bg-green-600 text-white rounded disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-green-700 transition"
+              className="px-5 py-2 rounded-xl bg-blue-600 text-white disabled:bg-gray-300"
             >
               Prev
             </button>
 
-            <span className="text-sm text-muted">
-              Page {page} of {meta?.pages || 1}
+            <span className="text-sm text-gray-600">
+              Page {page} of {meta.pages}
             </span>
 
             <button
-              onClick={handleNextPage}
-              disabled={page === (meta?.pages || 1)}
-              className="px-4 py-2 bg-green-600 text-white rounded disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-green-700 transition"
+              onClick={() => setPage((prev) => prev + 1)}
+              disabled={page === meta.pages}
+              className="px-5 py-2 rounded-xl bg-blue-600 text-white disabled:bg-gray-300"
             >
               Next
             </button>
