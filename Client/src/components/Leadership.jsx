@@ -51,7 +51,7 @@ const Leadership = () => {
                 </div>
                 <div className="p-8">
                   <h3 className="text-xl font-bold text-ink mb-1">
-                    {person.name}
+                    Mr. {person.name}
                   </h3>
                   <p className="text-primary font-semibold text-sm mb-4 uppercase tracking-wider">
                     {person.role}
