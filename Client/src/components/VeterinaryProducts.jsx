@@ -55,7 +55,7 @@ const VeterinaryProducts = () => {
   }, [search, page]);
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-6">
         {/* HEADER */}
         <Reveal>
@@ -105,11 +105,11 @@ const VeterinaryProducts = () => {
                 </th>
 
                 <th className="px-6 py-5 text-sm font-semibold text-gray-700">
-                  Strength
+                  Strength/Composition
                 </th>
 
                 <th className="px-6 py-5 text-sm font-semibold text-gray-700">
-                  Therapy Area
+                  Therapy Area/Benefits
                 </th>
 
                 <th className="px-6 py-5 text-sm font-semibold text-gray-700">

@@ -37,6 +37,10 @@ const Hero = () => {
         <p className="text-base sm:text-[1.0625rem] text-muted leading-[1.75] mb-8 max-w-[500px] mx-auto md:mx-0">
           Trusted Healthcare Solutions for Humans &amp; Animals
         </p>
+        <br></br>
+        <p className="text-base sm:text-[1.0625rem] text-muted leading-[1.75] mb-8 max-w-[500px] mx-auto md:mx-0">
+          Third Party Manufacturer
+        </p>
         <div className="flex flex-wrap gap-6 sm:gap-8 justify-center md:justify-start">
           <StatItem num={28} label="States Covered" />
           <StatItem num={500} suffix="+" label="Distributors" />
