@@ -15,7 +15,7 @@ const Certification = () => {
             <Reveal delayClass="delay-200"><div className="divider mx-auto mt-5"></div></Reveal>
             <Reveal delayClass="delay-200">
               <p className="section-sub mx-auto">
-                Officially registered and recognized pharmaceutical company.
+                Officially registered and recognized pharma company.
               </p>
             </Reveal>
           </div>

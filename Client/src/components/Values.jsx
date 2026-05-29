@@ -6,7 +6,7 @@ const Values = () => {
   const values = [
     {
       title: "Integrity",
-      desc: "Uncompromising adherence to ethical protocols and pharmaceutical transparency in every formulation we produce.",
+      desc: "Uncompromising adherence to ethical protocols and pharma transparency in every formulation we produce.",
       icon: <FaCheckCircle className="w-[22px] h-[22px] text-[#2E7D32]" />,
       delay: ""
     },

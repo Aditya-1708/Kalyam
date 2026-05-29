@@ -17,7 +17,7 @@ const Leadership = () => {
     {
       name: "Vishnu Kant Agnihotri",
       role: "Regional Sales Manager",
-      bio: "5 years of experience in pharmaceutical sales, driving regional growth and building strong client relationships.",
+      bio: "5 years of experience in pharma sales, driving regional growth and building strong client relationships.",
       image: "/images/VishnuKantAgnihotri.jpg",
     },
   ];

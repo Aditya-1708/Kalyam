@@ -16,7 +16,7 @@ const CTA = () => {
         
         <Reveal delayClass="delay-100">
           <p className="text-white/70 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
-            Experience excellence in pharmaceutical manufacturing and supply. Join our growing network of healthcare partners across India.
+            Experience excellence in pharma manufacturing and supply. Join our growing network of healthcare partners across India.
           </p>
         </Reveal>
         

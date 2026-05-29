@@ -52,7 +52,7 @@ const Hero = () => {
         <div className="w-full max-w-[560px] rounded-2xl overflow-hidden relative shadow-[0_32px_80px_rgba(46,125,50,0.15)]">
           <img
             src="/images/home.jpeg"
-            alt="Doctor providing pharmaceutical care"
+            alt="Doctor providing pharma care"
             className="w-full h-full object-cover"
             style={{ aspectRatio: "auto" }}
           />

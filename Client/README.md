@@ -1,8 +1,8 @@
-# 💊 Kalyam Pharmaceutical
+# 💊 Kalyam pharma
 
 ![Kalyam Logo](public/images/logo.png)
 
-A professional, modern, and high-performance corporate website for **Kalyam Pharmaceutical**. This platform showcases human and veterinary pharmaceutical solutions, company values, global reach, and career opportunities.
+A professional, modern, and high-performance corporate website for **Kalyam pharma**. This platform showcases human and veterinary pharma solutions, company values, global reach, and career opportunities.
 
 ---
 
@@ -108,7 +108,7 @@ Contributions are what make the open-source community such an amazing place to l
 
 ## 📧 Contact
 
-**Kalyam Pharmaceutical**  
+**Kalyam pharma**  
 Website: [https://github.com/Aditya-1708/Kalyam](https://github.com/Aditya-1708/Kalyam)  
 Project Link: [https://github.com/Aditya-1708/Kalyam](https://github.com/Aditya-1708/Kalyam)
 

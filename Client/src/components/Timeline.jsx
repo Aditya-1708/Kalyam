@@ -7,7 +7,7 @@ const events = [
 year: 'April 8, 2024',
 title: 'Company Foundation',
 description:
-'Official registration and the beginning of Kalyam Pharma’s journey in the pharmaceutical industry.'
+'Official registration and the beginning of Kalyam Pharma’s journey in the pharma industry.'
 },
 {
 year: 'Mid 2024',

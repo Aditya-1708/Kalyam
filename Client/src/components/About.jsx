@@ -12,10 +12,10 @@ const About = () => {
             <Reveal delayClass="delay-100"><h2 className="section-title">Our Corporate Journey</h2></Reveal>
             <Reveal delayClass="delay-200"><div className="divider"></div></Reveal>
             <Reveal delayClass="delay-200">
-              <p className="section-sub"><span className="font-semibold text-secondary">Kalyam Pharma</span> is a trusted third-party pharmaceutical company established on April 8, 2024.</p>
+              <p className="section-sub"><span className="font-semibold text-secondary">Kalyam Pharma</span> is a trusted third-party pharma company established on April 8, 2024.</p>
             </Reveal>
             <div className="mt-8">
-              <img src="/images/about.jpeg" alt="Quality Pharmaceutical Solutions" className="w-full rounded-2xl object-cover aspect-[3/4]" />
+              <img src="/images/about.jpeg" alt="Quality pharma Solutions" className="w-full rounded-2xl object-cover aspect-[3/4]" />
             </div>
           </div>
           
@@ -36,7 +36,7 @@ const About = () => {
                   <FaGlobe className="w-5 h-5 text-[#2E7D32]" />
                 </div>
                 <h4 className="font-serif text-[1.1875rem] font-bold text-ink mb-2.5">Our Presence</h4>
-                <p className="text-[0.9375rem] text-muted leading-[1.7]">With a strong and expanding distribution network, we currently supply our pharmaceutical products across all 28 states of India. We are committed to maintaining the highest quality standards and ensuring timely delivery.</p>
+                <p className="text-[0.9375rem] text-muted leading-[1.7]">With a strong and expanding distribution network, we currently supply our pharma products across all 28 states of India. We are committed to maintaining the highest quality standards and ensuring timely delivery.</p>
               </div>
             </Reveal>
             

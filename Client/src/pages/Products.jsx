@@ -8,7 +8,7 @@ const ProductsPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 lg:mb-24">
             <Reveal><p className="section-label">Our Catalog</p></Reveal>
-            <Reveal delayClass="delay-100"><h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-ink mb-6">Our Pharmaceutical Products</h1></Reveal>
+            <Reveal delayClass="delay-100"><h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-ink mb-6">Our pharma Products</h1></Reveal>
             <Reveal delayClass="delay-200"><div className="divider mx-auto mb-8"></div></Reveal>
             <Reveal delayClass="delay-200">
               <p className="text-muted text-lg max-w-2xl mx-auto leading-relaxed">Kalyam Pharma provides a diverse portfolio of high-quality formulations across human and veterinary divisions, engineered for optimal therapeutic outcomes.</p>
@@ -23,9 +23,9 @@ const ProductsPage = () => {
                     <path d="M256 224c-79.41 0-192 122.76-192 200.25 0 34.9 26.81 55.75 71.74 55.75 48.84 0 81.09-25.08 120.26-25.08 39.51 0 71.85 25.08 120.26 25.08 44.93 0 71.74-20.85 71.74-55.75C448 346.76 335.41 224 256 224zm-147.28-12.61c-10.24-34.65-42.44-57.07-71.56-49.92-22.12 5.41-40.78 22.97-46.72 43.91-5.94 20.94 2.21 43.27 19.22 54.67l-7.28 7.28c-40.37 40.37-40.37 105.81 0 146.18 40.37 40.37 105.81 40.37 146.18 0l7.28-7.28c11.41-17.01 33.73-25.16 54.67-19.22 20.94-5.94 38.5-24.6 43.91-46.72 7.15-29.12-15.27-61.32-49.92-71.56l-7.28-7.28c-40.37-40.37-105.81-40.37-146.18 0l-7.28 7.28z"></path>
                   </svg>
                 </div>
-                <h2 className="text-2xl font-serif font-bold text-ink group-hover:text-emerald transition-colors">Human Pharmaceutical Division</h2>
+                <h2 className="text-2xl font-serif font-bold text-ink group-hover:text-emerald transition-colors">Human pharma Division</h2>
               </div>
-              <p className="text-muted">Explore our wide range of pharmaceutical products for human healthcare, including antibiotics, multivitamins, immunity boosters, and more.</p>
+              <p className="text-muted">Explore our wide range of pharma products for human healthcare, including antibiotics, multivitamins, immunity boosters, and more.</p>
               <div className="mt-6 flex items-center text-emerald font-semibold">
                 <span>View Products</span>
                 <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" className="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg">

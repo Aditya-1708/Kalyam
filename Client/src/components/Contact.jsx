@@ -25,7 +25,7 @@ const Contact = () => {
 
             <Reveal delayClass="delay-200">
               <p className="section-sub mb-8">
-                We are a leading <strong>Medicine Third Party Manufacturing Company</strong>. Contact us for any inquiries regarding our pharmaceutical solutions for human and veterinary healthcare.
+                We are a leading <strong>Medicine Third Party Manufacturing Company</strong>. Contact us for any inquiries regarding our pharma solutions for human and veterinary healthcare.
               </p>
 
               <div className="flex flex-col gap-6">

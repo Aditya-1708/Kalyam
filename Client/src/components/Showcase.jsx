@@ -66,7 +66,7 @@ const Showcase = () => {
           </h2>
 
           <p className="mt-6 sm:mt-7 text-[#5f6f5f] max-w-2xl mx-auto leading-7 sm:leading-8 text-base sm:text-lg">
-            Discover trusted pharmaceutical and healthcare
+            Discover trusted pharma and healthcare
             products crafted for quality, wellness, and
             innovation across human and veterinary care.
           </p>
